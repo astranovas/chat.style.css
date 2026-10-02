@@ -1,0 +1,363 @@
+ @keyframes glow {
+ from {
+   border-color: #80FFF7;
+ }
+ to {
+   border-color: transparent;
+ }
+}
+:root {
+ --notification-sfx: /media/beep.mp3;
+}
+body {
+  background-color: #000;
+  color: #80FFF7;
+  font-family: monospace;
+}
+body:after {
+  content: " ";
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(#4DAFFF 50%, #0000F4 50%);
+  background-size: 100% 2px;
+  background-repeat: repeat;
+  opacity: 0.25;
+  z-index: 9999999999999999;
+  pointer-events: none;
+}
+.allMessages {
+ color: #0000F4;
+ text-shadow: 1px 1px 3px #FFFFFF;
+ border-radius: 10px;
+ font-family: monospace;
+ letter-spacing: -1px;
+ max-width: calc(100% - 14px);
+ position: relative;
+}
+.allMessages.pm {
+  padding-top: 26px;
+}
+.allMessages.pm:before {
+  content: "Private Message:";
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 16px;
+  line-height: 16px;
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  font-weight: bolder;
+  color: #0000F4;
+}
+.sent {
+}
+.recieved {
+}
+.senderInfo {
+  color: #80FFF7;
+  text-shadow: 0 0 3px #80FFF7;
+}
+#background {
+ background: radial-gradient(#4DAFFF, #0000F4);
+ scrollbar-color: transparent transparent;
+ scrollbar-width: none;
+}
+#background::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+#input, #nameEntry {
+ color: #80FFF7;
+ background: #0000F4;
+ border: none;
+ outline: none;
+ font-family: monospace;
+}
+#input:empty:before {
+ color: #050;
+}
+#timestamp {
+ color: #80FFF7;
+ font-style: italic;
+ font-family: monospace;
+ font-size: 9pt;
+ text-align: left !important;
+ width: calc(100% - 20px);
+ padding: 0 10px 0 10px;
+ text-shadow: 1px 1px 3px #80FFF7;
+}
+#top_banner {
+ font-family: monospace;
+ color: #80FFF7;
+ background: #0000F4;
+}
+blockquote {
+ background-color: #0000F4;
+ border-color: #80FFF7;
+}
+#loadMore {
+ color: #80FFF7;
+ font-family: monospace;
+ font-size: 10pt;
+}
+#loadMore:hover {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-decoration-color: #FF2CD8
+}
+.pinned {
+ border-color: #80FFF7;
+}
+.msgWrapper:hover {
+  animation: 500ms linear infinite alternate glow;
+}
+.msgWrapper:hover:after {
+  content: " ";
+  position: absolute;
+  right: 2px;
+  top: -2px;
+  height: 100%;
+  width: 5px;
+  background-color: transparent;
+  border-top: solid 2px #80FFF7;
+  border-bottom: solid 2px #80FFF7;
+  border-right: solid 2px #80FFF7;
+  border-color: inherit;
+  filter: drop-shadow(0 0 5px #80FFF7);
+}
+.msgWrapper:hover:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  height: 100%;
+  width: 5px;
+  background-color: transparent;
+  border-top: solid 2px #80FFF7;
+  border-bottom: solid 2px #80FFF7;
+  border-left: solid 2px #80FFF7;
+  border-color: inherit;
+  filter: drop-shadow(0 0 2px #80FFF7);
+}
+.pinned:after {
+  content: " ";
+  position: absolute;
+  right: 2px;
+  top: -2px;
+  height: 100%;
+  width: 2%;
+  background-color: transparent;
+  border-top: solid 2px #80FFF7;
+  border-bottom: solid 2px #80FFF7;
+  border-right: solid 2px #80FFF7;
+  border-color: inherit;
+  filter: drop-shadow(0 0 5px #80FFF7);
+}
+.pinned:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  height: 100%;
+  width: 2%;
+  background-color: transparent;
+  border-top: solid 2px #80FFF7;
+  border-bottom: solid 2px #80FFF7;
+  border-left: solid 2px #80FFF7;
+  border-color: inherit;
+  filter: drop-shadow(0 0 2px #80FFF7);
+}
+.mod, .owner, .tester {
+  width: 0;
+  font-size: 8pt;
+  text-shadow: none;
+}
+.mod::before {
+  content: "[MODERATOR]";
+  display: inline-block;
+  color: #80FFF7;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  text-shadow: 0 0 3px #80FFF7;
+}
+.owner::before {
+  content: "[OWNER]";
+  display: inline-block;
+  color: #FF2CD8;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  text-shadow: 0 0 3px #FF2CD8;
+}
+.beta::before {
+  content: "[BETA TESTER]";
+  display: inline-block;
+  color: #80FFF7;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+#settings {
+  background-image: none;
+}
+#settings:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  content: "#";
+  color: #80FFF7;
+}
+#settings:hover:after {
+  font-weight: bold;
+}
+#replyBanner {
+  color: #80FFF7;
+  font-family: monospace;
+  font-size: 8pt;
+  text-shadow: 0 0 3px #80FFF7;
+}
+.msgBody a {
+  color: #80FFF7 !important;
+}
+#emojiTrayToggle:after {
+  content: ":)";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #80FFF7;
+  text-shadow: 0 0 2px #80FFF7;
+}
+#emojiTray {
+  background-color: #0000F4;
+  color: #80FFF7;
+  border-color: #80FFF7;
+}
+.emojiInGrid:hover {
+  transform: scale(200%);
+  filter: drop-shadow(0px 2px 3px #80FFF7);
+  transition: all 500ms ease-in-out;
+}
+#settingsMenu {
+  color: #80FFF7;
+}
+#settingsMenu input[type=text] {
+  border: none;
+  border-bottom: solid 1px #80FFF7;
+  background-color: transparent;
+  color: #80FFF7;
+  outline: none !important;
+}
+#save {
+  border: none;
+  background-color: transparent;
+  color: #80FFF7;
+  font-size: 12pt;
+  font-weight: bolder;
+  cursor: pointer;
+}
+#save:hover {
+  text-shadow: 0 0 5px #80FFF7;
+}
+#save::before {
+  content: "[";
+    margin-right: 10px;
+}
+#save::after {
+  content: "]";
+  margin-left: 10px;
+}
+#is_typing {
+  background-color: transparent;
+  border: none;
+  border-radius: 1px;
+  width: unset;
+  height: unset;
+}
+#is_typing:before {
+  content: "Someone's typing";
+}
+#is_typing > span {
+  height: 2px;
+  width: 2px;
+  border-radius: 0;
+  background-color: #80FFF7;
+}
+#onlineUserList {
+    background: #0000F4;
+    border-color: #80FFF7;
+    font-family: monospace
+}
+#onlineUserList button {
+    color: inherit;
+    background: inherit;
+    padding: 10px;
+    font-family: monospace;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 1s linear;
+}
+#onlineUserList button:hover {
+    width: 50%;
+    cursor: pointer; 
+}
+#onlineUserList button:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border: solid 2px #80FFF7;
+    border-right: none;
+}
+#onlineUserList button:after {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border: solid 2px #80FFF7;
+    border-left: none;
+}
+.onlineUser {
+    position: relative;
+    margin: 0 !important;
+    padding: 5px;
+    border: solid 2px transparent;
+}
+.onlineUser:hover:before {
+    all: unset;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border: solid 2px #80FFF7;
+    border-right: none;
+}
+.onlineUser:hover:after {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border: solid 2px #80FFF7;
+    border-left: none;
+}
